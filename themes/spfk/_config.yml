@@ -13,7 +13,7 @@ menu:
 # 随笔: /tags/随笔
 
 # Link to your avatar | 填写头像地址
-avatar: /img/head.jpg
+avatar: /img/meLife.jpg
 
 # Small icon of Your site | 站点小图标地址
 favicon: /img/favicon.png
@@ -24,13 +24,13 @@ favicon: /img/favicon.png
 ## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
 ## https://github.com/hexojs/hexo-generator-feed
 subnav:
-  mail: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E"
+  mail: "mailto:louiswang0898@gmail.com"
   github: "https://github.com/luuman"
-  zhihu: "https://www.zhihu.com/people/luuman"
-  weibo: "http://weibo.com/lishangmou"
-  google: "http://i.youku.com/shangmou"
-  twitter: "http://twitter.com/luuman"
-  facebook: "#"
+#  zhihu: "https://www.zhihu.com/people/luuman"
+  weibo: "http://weibo.com/207123398"
+#  google: "http://i.youku.com/shangmou"
+#  twitter: "http://twitter.com/luuman"
+#  facebook: "#"
   rss: /atom.xml
   # linkedin: "https://www.linkedin.com/in/%E5%BF%A0%E6%88%90-%E6%9D%8E-a48562b1"
   # douban: "#"
@@ -129,15 +129,11 @@ tagcloud: true
 # Blogroll, Link exchange | 友情链接
 # friends: false
 friends:
-  MOxFIVE: http://MOxFIVE.github.io/
-  DoubleV: http://www.vsay.cn/
-  兮兮: http://www.ccwebsite.com/
-  翁天信: http://blog.dandyweng.com/
-  潘利强: http://www.plqblog.com/views/index.php
-  hankin技术宅: http://www.hankin.cn/
+  wangyj0898: https://github.com/stars/wangyj0898
+
 
 #是否开启“关于我”。
-aboutme: 90后，水瓶座普通男青年！爱折腾，爱运动，更爱游离于错综复杂的编码与逻辑中，无法自拔。
+aboutme: 心静自然。。。
 #aboutme: false
 
 # 是否在新窗口打开链接

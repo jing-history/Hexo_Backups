@@ -12,7 +12,6 @@ original:
 permalink: 
 ---
 　　** Hexo 主题：**已经开始准备养成写博客的习惯，发现Hexo 快速、简洁且高效的博客框架，所以开始学习使用，部署在git 上面。
-<!-- more -->
 [文章链接](http://luuman.github.io/2015/12/21/GitHub+Hexo/)   
 
 Hexo 的安装 
