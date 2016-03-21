@@ -1,11 +1,11 @@
-title:  Git 使用问题
-date: 2016-03-18 11:30:00
-description: Git 使用过程中碰到的问题
+title:  VIM使用教程
+date: 2016-03-21 17:30:00
+description: VIM快捷键和操作的使用
 categories:
-- Git
+- VIM
 tags:
-- 知识
-- 问题
+- tutorial
+- tool
 toc: true
 author: Louis Wang
 comments:
@@ -13,83 +13,108 @@ original:
 permalink: 
 ---
 
-Git 使用和问题总结 
-===========
-          
-## 1.解决github push错误The requested URL returned error: 403 Forbidden while accessing  
-[参考链接](http://houzhiqingjava.blog.163.com/blog/static/167399507201472343324562) 
-### 使用git 提交的时候提示以下内容：
-```
-[git@AYZ github01]$ git push -u origin master
-error: The requested URL returned error: 403 Forbidden while accessing
-https://github.com/jingzing/JingJourney.git
-```
+VIM 使用教程
+========
 
-### 解决办法：
-```
-vi .git/config
+[文章转载自：](http://beiyuu.com/git-vim-tutorial/) 
 
-# 将
-[remote "origin"]  
-    url = https://github.com/jingzing/JingJourney.git
-修改为：
-[remote "origin"]
-url = https://jingzing@github.com/jingzing/JingJourney.git
-```
+** 第一次使用VIM **，会觉得无所适从，他并不像记事本，你敲什么键就显示什么，理解VIM的需要明白他的两种模式： - 命令模式 (Command Mode) - 编辑模式 (Insert Mode)
 
-### 总结：其实还不是很明白为什么这样是可以的，网上找的解决办法，先mark 下。
+命令模式下，可以做移动、编辑操作；编辑模式则用来输入。键入i,o,s,a等即可进入编辑模式，后面解释原因。
 
-## 2.git pull push没有指定branch报错的解决方法
-[参考链接](https://www.netroby.com/view/3203)
-### git 执行git push 和git pull的操作时候，经常看到下面的提示：
-```
-You asked me to pull without telling me which branch you
-want to merge with, and 'branch.dev.merge' in
-your configuration file does not tell me, either. Please
-specify which branch you want to use on the command line and
-try again (e.g. 'git pull <repository> <refspec>').
-See git-pull(1) for details.
+模式的设计是VIM和其他编辑器最不同的地方，优势和劣势也全基于此而生。
 
-If you often merge with the same branch, you may want to
-use something like the following in your configuration file:
+## 基本操作(以下介绍的键盘操作，都是大小写敏感的，并且要在命令模式下完成，需注意)：
 
-[branch "dev"]
-remote = <nickname>
-merge = <remote-ref>
+### 以字为单位的移动
+> - h 向左移动一个字
+> - j 向下移动一行
+> - k 向上
+> - l 向右
 
-[remote "<nickname>"]
-url = <url>
-fetch = <refspec>
+这四个键在右手最容易碰到几个位置，最为常用。
 
-See git-config(1) for details.
-```
+### 以词为单位的移动：
+> - w 下一個word w(ord)
+> - W 下一個word(跳过标点)
+> - b 前一個word b(ackward)
+> - B 前一个word(跳过标点)
+> - e 跳到当前word的尾端 e(nd)
 
-### 在高版本的 git下面，也许会看见这样的提示：
-```
- There is no tracking information for the current branch.
- 
- Please specify which branch you want to merge with.
- 
- See git-pull(1) for details
- 
- git pull <remote> <branch>
- 
- If you wish to set tracking information for this branch you can do so with
- 
- git branch --set-upstream master origin/<branch>
- 
- 看到第二个提示，我们现在知道了一种解决方案。也就是指定当前工作目录工作分支，跟远程的仓库，分支之间的链接关系。
- 
- 比如我们设置master对应远程仓库的master分支
- 
- git branch --set-upstream master origin/master
- 
- 这样在我们每次想push或者pull的时候，只需要 输入git push 或者git pull即可。
- 
- 在此之前，我们必须要指定想要push或者pull的远程分支。
- 
- git push origin master
- 
- git pull origin master
-```
+### 行移动：
+> - 0 跳到当前行的开头
+> - ^ 跳到当前行第一个非空字符
+> - $ 跳到行尾
+助记：0(第0个字符),^和$含义同正则表达式
+
+### 段落移动：
+> - { 上一段(以空白行分隔)
+> - } 下一段(以空白行分隔)
+> - % 跳到当前对应的括号上(适用各种配对符号)
+
+### 跳跃移动：
+> - /xxxx 搜索xxxx，然后可以用n下一个，N上一个移动
+> - # 向前搜索光标当前所在的字
+> - * 向后搜索光标当前所在的字
+> - fx 在当前行移动到光标之后第一个字符x的位置 f(ind)x
+> - gd 跳到光标所在位置词(word)的定义位置 g(o)d(efine)
+> - gg 到文档顶部
+> - G 到文档底部
+> - :x 跳到第x行(x是行号)
+> - ctrl+d 向下翻页 d(down)
+> - ctrl+u 向上翻页 u(p)
+
+## 基本编辑
+
+### 修改
+> - i 在光标当前位置向前插入 i(nsert)
+> - I 在本行第一个字符前插入
+> - a 在光标当前位置向后插入 a(fter)
+> - A 在本行末尾插入
+> - o 向下插入一行
+> - O 向上插入一行
+> - :w 保存
+> - :q 退出
+> - :wq 保存并退出
+
+### 删除
+> - x 删除当前字符
+> - dd 删除当前行 d(elete)
+> - dw 删除当前光标下的词 d(elete)w(ord)
+
+### 复制粘贴
+> - yy 复制当前行 y(ank)
+> - yw 复制当前光标下的词 y(ank)w(ord)
+> - p 粘贴 p(aste)
+> - P 粘贴在当前位置之前
+
+## 进阶操作
+限于篇幅，在这里我仅介绍下我非常常用的几个操作。
+### 重复操作
+因为VIM所有的操作都是原子化的，所以把这些操作程序化就非常简单了：
+
+> - 5w 相当于按五次w键；
+> - 6j 下移6行，相当于按六次j；
+> - 3J 大写J,本来是将下一行与当前行合并，加上数量，就是重复操作3次；
+> - 6dw和d6w 结果是一样，就是删除6个word；
+> - 剩下的无数情况，自己类推吧。
+
+### 高效编辑
+> - di" 光标在""之间，则删除""之间的内容
+> - yi( 光标在()之间，则复制()之间的内容
+> - vi[ 光标在[]之间，则选中[]之间的内容
+> - 以上三种可以自由组合搭配，效率奇高，i(nner)
+> - dtx 删除字符直到遇见光标之后的第一个x字符
+> - ytx 复制字符直到遇见光标之后的第一个x字符
+
+### 标记和宏(macro)
+> - ma 将当前位置标记为a，26个字母均可做标记，mb、mc等等；
+> - 'a 跳转到a标记的位置；
+> - 这是一组很好的文档内标记方法，在文档中跳跃编辑时很有用；
+> - qa 将之后的所有键盘操作录制下来，直到再次在命令模式按下q，并存储在a中；
+> - @a 执行刚刚记录在a里面的键盘操作；
+> - @@ 执行上一次的macro操作；
+宏操作是VIM最为神奇的操作之一，需要慢慢体会其强大之处；
+VIM的基本操作，可以挖掘的东西非常多，不仅仅需要记忆，更需要自己去探索总结，熟练之后，效率会大幅度提升。后面会给出一些参考链接。
+
 
