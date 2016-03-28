@@ -17,6 +17,7 @@ VIM 使用教程
 ========
 
 [文章转载自：](http://beiyuu.com/git-vim-tutorial/) 
+[发现一个很不错的VIM使用教程可以参考：](http://coolshell.cn/articles/5426.html)
 
 ** 第一次使用VIM **，会觉得无所适从，他并不像记事本，你敲什么键就显示什么，理解VIM的需要明白他的两种模式： - 命令模式 (Command Mode) - 编辑模式 (Insert Mode)
 
