@@ -118,4 +118,17 @@ VIM 使用教程
 宏操作是VIM最为神奇的操作之一，需要慢慢体会其强大之处；
 VIM的基本操作，可以挖掘的东西非常多，不仅仅需要记忆，更需要自己去探索总结，熟练之后，效率会大幅度提升。后面会给出一些参考链接。
 
+## Mac下面使用一些技巧记录：
+### 如果想在终端使用macvim,可以如下面配置:
+```
+sudo port install MacVim
+alias vi='open -a MacVim'
+alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
+
+这样在命令行默认敲 vi 就会使用 gui 版本，敲 vim 就使用终端版
+
+其中第一个 alias 也可以改为
+alias vi='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim -g'
+```
+
 
