@@ -28,7 +28,8 @@ permalink:
 > - 容错：如果有少数 nodes 出错，比如重启、当机、断网、网络丢包等各种 fault/fail 都不影响整个系统的运行；
 > - 高可靠性：容错、冗余等保证了数据库系统的可靠性。
 
-## hashes(对象)类型的特性
+## Redis 常用的命令
+### hashes(对象)类型的特性
           
     Redis hash 是一个 string 类型的 field 和 value 的映射表.它的添加、删除操作都是 O(1) （平均）。hash 特别适合用于存储对象。相较于将对象的每个字段存成单个 string 类型。将一个对象存
     储在 hash 类型中会占用更少的内存，并且可以更方便的存取整个对象。省内存的原因是新建一个 hash 对象时开始是用 zipmap（又称为 small hash）来存储的。这个 zipmap 其实并不
@@ -38,7 +39,7 @@ permalink:
     hash-max-zipmap-entries 64 #配置字段最多 64 个
     hash-max-zipmap-value 512 #配置 value 最大为 512 字节
 
-## lists  类型及操作
+### lists  类型及操作
 
     list 是一个链表结构，主要功能是 push、pop、获取一个范围的所有值等等，操作中 key 理解为链表的名字。
     
@@ -47,3 +48,10 @@ permalink:
     或者不存在，会立即返回 nil。但是阻塞版本的 b[lr]pop 可以则可以阻塞，当然可以加超时时间，超时后也会返回 nil。为什么要阻塞版本的 pop 呢，主要是为了避免轮询。举个简单的
     例子如果我们用 list 来实现一个工作队列。执行任务的 thread 可以调用阻塞版本的 pop 去获取任务这样就可以避免轮询去检查是否有任务存在。当任务来时候工作线程可以立即返回，
     也可以避免轮询带来的延迟。
+    
+### sets  类型及操作
+
+    set 的是通过 hash table 实现的，所以添加、删除和查找的复杂度都是 O(1)。hash table 会随着添加或者删除自动的调整大小。需要注意的是调整 hash table 大小时候需要同步（获取写
+    锁）会阻塞其他读写操作，可能不久后就会改用跳表（skip list）来实现，跳表已经在 sortedset 中使用了。关于 set 集合类型除了基本的添加删除操作，其他有用的操作还包含集合的
+    取并集(union)，交集(intersection)，差集(difference)。通过这些操作可以很容易的实现 sns中的好友推荐和 blog 的 tag 功能。   
+    
