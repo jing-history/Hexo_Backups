@@ -12,8 +12,51 @@ comments:
 original:
 permalink: 
 ---
-　　** Redis 教程：**收集一些学习Redis 的教程和方法。
+　　** Redis 教程：**收集一些学习Redis 的教程和方法
+
+![Redis-front](http://7xt1zm.com2.z0.glb.qiniucdn.com/static/images/blog/Redis-front.png)
+
 ===================================
+
+### Redis 安装(Mac)
+mac 上安装 redis 首先必须保证mac 已经安装 xcode.
+因为make时要用到 Xcode 的command Tools (新的版本直接装tool 就可以了,不用装xcode)
+(1)下载 redis   http://redis.googlecode.com/files/redis-2.8.7.tar.gz 解压到当前目录.
+(2)你也可以在终端下载:
+```
+curl -O http://redis.googlecode.com/files/redis-2.8.7.tar.gz
+sudo tar -zxf redis-2.8.7.tar.gz
+```
+(3)修改文件夹名,编译
+```
+mv redis-2.8.7 redis
+cd redis/
+sudo make
+sudo make test
+sudo make isntall
+```
+(4)你会在redis 目录里找到一个 redis.conf 的配置文件,打开编辑此配置文件,找到 dir  .  这一行配置.
+
+此配置是将内存中的数据写入一个文件,这个数据库文件要保存到什么地方 就是这个配置项起到的作用.
+
+我在mac根目录下创建了 opt 的文件夹(注意此文件夹必须有可读写权限)
+
+所以这一行的配置是 dir  /opt/redis/
+
+修改后保存配置文件,同时将配置文件移动到 /etc 目录下.
+```
+sudo mv redis.conf /etc
+```
+(5) 上面第三步 make install 成功后,你就应该在这个目录下看到redis
+```
+/usr/local/bin/redis-server
+```
+(6) 尝试启动一下 redis
+```
+/usr/local/bin/redis-server /etc/redis.conf
+```
+如果运行成功,你会看到下面的redis启动服务画面.
+
 
 ## Key-Value Store 的特性
           
