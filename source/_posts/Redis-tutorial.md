@@ -57,6 +57,8 @@ sudo mv redis.conf /etc
 ```
 如果运行成功,你会看到下面的redis启动服务画面.
 
+![Redis-start](http://7xt1zm.com2.z0.glb.qiniucdn.com/static/images/blog/Redis-start.png)
+
 
 ## Key-Value Store 的特性
           
