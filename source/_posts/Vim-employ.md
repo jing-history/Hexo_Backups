@@ -131,4 +131,12 @@ alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
 alias vi='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim -g'
 ```
 
+## VIM 中文显示乱码解决  
+### 这里所说的都是全局设定，打开vimrc文件后，只需要在文件最后添加以下代码就可以了：
+```
+set fileencodings=utf-8,gb2312,gbk,gb18030
+set termencoding=utf-8
+set fileformats=unix
+set encoding=prc
+```
 
